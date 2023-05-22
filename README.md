@@ -23,6 +23,12 @@ kubectl rollout undo deployment/nginx-deployment
 # Create Secret
 `kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt `
 
+# Config Map
+```
+kubectl create configmap redis-config --from-file=redis.conf
+kubectl create configmap special-config --from-literal=driver=jdbc --from-literal=database=postgres	
+```
+
 # Decryption
 ```
 $ echo "cGFzc3dvcmQK"|base64 -d
