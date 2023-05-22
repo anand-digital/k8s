@@ -1,0 +1,10 @@
+apiVersion: v1	 #string
+kind: Pod
+metadata:        #dictionary   
+  name: nginx-pod
+  labels:
+    type: front-end
+spec:
+  containers:    # list/array
+  - name: nginx
+    image: nginx
