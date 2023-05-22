@@ -1,7 +1,7 @@
 # k8s cheatsheet
 https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
-kubectl set image deployment/nginx-deployment nginx-container=nginx:1.18.0          
+kubectl set image deployment/nginx-deployment nginx-container=nginx:1.18.0
 kubectl rollout status deployment/nginx-deployment
 kubectl rollout history deployment/nginx-deployment
 kubectl rollout undo deployment/nginx-deployment   
