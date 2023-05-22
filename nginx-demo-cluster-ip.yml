@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    type: front-end
+spec:
+  template:
+    metadata:			# Dictionary
+      name: nginx-deployment
+      labels:
+        type: front-end
+    spec:
+      containers:			# List/Array
+        - name: nginx-container	# 1st item in an array
+          image: nginx
+  replicas: 4
+  selector:
+    matchLabels:
+      type: front-end
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc
+  labels:
+    type: nginx-svc
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080	  	# mandatory field
+      targetPort: 80            # assumed to be same as "port" if not provided
+  selector:
+    type: front-end
