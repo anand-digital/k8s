@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+  labels:
+    type: front-end
+spec:
+  template:
+    metadata:			# Dictionary
+      name: jenkins
+      labels:
+        type: front-end
+    spec:
+      containers:			# List/Array
+        - name: jenkins # 1st item in an array
+          image: jenkins/jenkins
+  replicas: 1
+  selector:
+    matchLabels:
+      type: front-end
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins
+spec:
+  type: NodePort
+  ports:
+    - port: 8080	  	# mandatory field
+      targetPort: 8080           # assumed to be same as "port" if not provided
+      nodePort: 32689
+  selector:
+    type: front-end
+ 
