@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonar
+  labels:
+    type: sonar
+spec:
+  template:
+    metadata:			# Dictionary
+      name: sonar
+      labels:
+        type: sonar
+    spec:
+      containers:			# List/Array
+        - name: jenkins # 1st item in an array
+          image: sonarqube
+  replicas: 1
+  selector:
+    matchLabels:
+      type: sonar
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonar
+spec:
+  type: NodePort
+  ports:
+    - port: 9000	  	# mandatory field
+      targetPort: 9000          # assumed to be same as "port" if not provided
+      nodePort: 32690
+  selector:
+    type: sonar
+ 
