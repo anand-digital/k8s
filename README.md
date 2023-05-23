@@ -43,3 +43,9 @@ cm9vdA==
 $ echo -n "password" | base64
 cGFzc3dvcmQ=
 ```
+
+# Configure Liveness, Readiness and Startup Probes
+https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+
+# Namespace
+https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
